@@ -4,23 +4,23 @@ import heroImg from "../assets/lendsqr-hero.svg";
 
 const Login = () => {
   return (
-    <div className="m-12 w-full h-screen ">
+    <div className="mt-12 w-full h-screen mx-auto">
       {/* logo */}
-      <div className="">
-        <img src={logo} alt="logo" className="object-cover" />
+      <div className="ml-24">
+        <img src={logo} alt="logo" />
       </div>
-      <div className="flex flex-col md:flex-row mx-auto justify-center items-center">
+      <div className="flex flex-col md:flex-row justify-around items-center mt-20 lg:justify-around lg:gap-36 flex-1 mx-16 md:gap-3">
         {/* picture */}
-        <div>
-          <img src={heroImg} alt="hero image" />
+        <div className="">
+          <img src={heroImg} alt="hero image" className="object-fill" />
         </div>
         {/* form */}
-        <div>
-          <h2 className="text-[40px] leading-[54.64px] text-dark-blue ">
+        <div className="flex flex-col gap-3 ">
+          <h2 className="text-[40px] leading-[54.64px] text-dark-blue font-bold -tracking-[0.04em]">
             Welcome!
           </h2>
           <h3 className="text-light-gray text-xl">Enter details to login.</h3>
-          <div className="flex flex-col gap-6 justify-between">
+          <div className="flex flex-col gap-6 justify-between mt-12">
             <input
               type="text"
               placeholder="Email"
@@ -29,10 +29,14 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
-              className="border-2 border-light-gray/[0.15] p-3 text-[14px] rounded-md "
+              className="border-2 border-light-gray/[0.15] p-3 text-[14px] rounded-md w-full"
             />
-            <h5 className="text-light-blue">FORGOT PASSWORD?</h5>
-            <button className="bg-light-blue">LOG IN</button>
+            <h5 className="text-light-blue text-sm font-semibold ">
+              FORGOT PASSWORD?
+            </h5>
+            <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest">
+              LOG IN
+            </button>
           </div>
         </div>
       </div>
