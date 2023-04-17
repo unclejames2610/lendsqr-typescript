@@ -1,8 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import logo from "../assets/lendsqr-logo.svg";
 import heroImg from "../assets/lendsqr-hero.svg";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login: FC = () => {
   return (
     <div className="mt-12 w-full h-screen mx-auto">
       {/* logo */}
@@ -34,9 +35,11 @@ const Login = () => {
             <h5 className="text-light-blue text-sm font-semibold ">
               FORGOT PASSWORD?
             </h5>
-            <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest">
-              LOG IN
-            </button>
+            <Link to="dashboard">
+              <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest">
+                LOG IN
+              </button>
+            </Link>
           </div>
         </div>
       </div>
