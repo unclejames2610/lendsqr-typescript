@@ -1,12 +1,33 @@
 import React, { ReactElement } from "react";
 import { FaHome, FaToolbox } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { BsPeopleFill } from "react-icons/bs";
+import {
+  BsPeopleFill,
+  BsFillPersonCheckFill,
+  BsFillPersonXFill,
+  BsPersonFillGear,
+} from "react-icons/bs";
 import { IconType } from "react-icons";
 import { HiUserGroup } from "react-icons/hi";
-import {TbMoneybag} from "react-icons/tb";
-import {FaRegHandshake, FaPiggyBank} from "react-icons/fa";
-
+import {
+  TbMoneybag,
+  TbAdjustmentsHorizontal,
+  TbClipboardText,
+} from "react-icons/tb";
+import { CiPercent } from "react-icons/ci";
+import {
+  FaRegHandshake,
+  FaPiggyBank,
+  FaHandHoldingUsd,
+  FaCoins,
+  FaFan,
+  FaScroll,
+} from "react-icons/fa";
+import {
+  AiTwotoneBank,
+  AiOutlineTransaction,
+  AiOutlineBarChart,
+} from "react-icons/ai";
 
 interface Link {
   name: string;
@@ -20,10 +41,19 @@ interface Section {
 
 export const links: Section[] = [
   {
+    title: "",
+    links: [
+      {
+        name: "Dashboard",
+        icon: FaHome,
+      },
+    ],
+  },
+  {
     title: "Customers",
     links: [
       {
-        name: "Users",
+        name: "users",
         icon: BsPeopleFill,
       },
       {
@@ -36,82 +66,82 @@ export const links: Section[] = [
       },
       {
         name: "Decision Models",
-        icon: FaRegHandshake
+        icon: FaRegHandshake,
       },
       {
         name: "Savings",
-        icon:
+        icon: FaPiggyBank,
       },
       {
         name: "Loan Requests",
-        icon:
+        icon: FaHandHoldingUsd,
       },
       {
         name: "Whitelist",
-        icon:
+        icon: BsFillPersonCheckFill,
       },
       {
         name: "Karma",
-        icon:
+        icon: BsFillPersonXFill,
       },
     ],
   },
   {
     title: "Businesses",
     links: [
-        {
-            name: "Organization",
-            icon:
-        },
-        {
-            name: "Loan Products",
-            icon:
-          },
-          {
-            name: "Savings Products",
-            icon:
-          },
-          {
-            name: "Fees and Charges",
-            icon:
-          },
-          {
-            name: "Transactions",
-            icon:
-          },
-          {
-            name: "Services",
-            icon:
-          },
-          {
-            name: "Service Account",
-            icon:
-          },
-          {
-            name: "Settlements",
-            icon:
-          },
-          {
-            name: "Reports",
-            icon:
-          },
+      {
+        name: "Organization",
+        icon: FaToolbox,
+      },
+      {
+        name: "Loan Products",
+        icon: FaHandHoldingUsd,
+      },
+      {
+        name: "Savings Products",
+        icon: AiTwotoneBank,
+      },
+      {
+        name: "Fees and Charges",
+        icon: FaCoins,
+      },
+      {
+        name: "Transactions",
+        icon: AiOutlineTransaction,
+      },
+      {
+        name: "Services",
+        icon: FaFan,
+      },
+      {
+        name: "Service Account",
+        icon: BsPersonFillGear,
+      },
+      {
+        name: "Settlements",
+        icon: FaScroll,
+      },
+      {
+        name: "Reports",
+        icon: AiOutlineBarChart,
+      },
     ],
   },
   {
-    title: "Settings"
+    title: "Settings",
     links: [
-        {
-            name: "Preferences",
-            icon:
-        },
-        {
-            name: "Fees and Pricing",
-            icon:
-          },
-          {
-            name: "Audit Logs",
-            icon:
-          },
+      {
+        name: "Preferences",
+        icon: TbAdjustmentsHorizontal,
+      },
+      {
+        name: "Fees and Pricing",
+        icon: CiPercent,
+      },
+      {
+        name: "Audit Logs",
+        icon: TbClipboardText,
+      },
     ],
   },
 ];

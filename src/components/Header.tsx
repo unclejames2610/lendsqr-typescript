@@ -17,7 +17,7 @@ const Header: FC = () => {
         <input
           type="text"
           placeholder="Search for anything"
-          className="px-4 py-3 border border-light-gray/[0.15] text-sm rounded-l-lg border-r-0 lg:w-[500px]"
+          className="px-4 py-3 border border-light-gray/[0.15] text-sm rounded-l-lg border-r-0 lg:w-[500px] focus:outline-none"
         />
         <span className="bg-light-blue border border-light-blue text-white px-4 py-3 border-l-0 rounded-r-lg">
           <AiOutlineSearch className="text-lg" />
