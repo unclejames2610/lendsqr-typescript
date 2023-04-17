@@ -6,16 +6,16 @@ const Login = () => {
   return (
     <div className="mt-12 w-full h-screen mx-auto">
       {/* logo */}
-      <div className="ml-24">
+      <div className="ml-4 md:ml-24">
         <img src={logo} alt="logo" />
       </div>
-      <div className="flex flex-col md:flex-row justify-around items-center mt-20 lg:justify-around lg:gap-36 flex-1 mx-16 md:gap-3">
+      <div className="flex flex-col md:flex-row justify-between items-center mt-20 flex-1 gap-16 md:gap-12 lg:gap-0  ">
         {/* picture */}
-        <div className="">
+        <div className="ml-4 md:ml-24">
           <img src={heroImg} alt="hero image" className="object-fill" />
         </div>
         {/* form */}
-        <div className="flex flex-col gap-3 ">
+        <div className="flex flex-col gap-3 lg:w-[447px] mr-4 md:mr-24 lg:mr-48">
           <h2 className="text-[40px] leading-[54.64px] text-dark-blue font-bold -tracking-[0.04em]">
             Welcome!
           </h2>
