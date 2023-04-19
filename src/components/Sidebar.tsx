@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { FaHome, FaToolbox } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BsPeopleFill } from "react-icons/bs";
-import { links } from "../data/dummy";
+import { Link, links, Section } from "../data/dummy";
 
 const Sidebar: FC = () => {
   const activeLink =
@@ -17,7 +17,7 @@ const Sidebar: FC = () => {
         <span>Switch Organization</span>
         <RiArrowDropDownLine size="30px" />
       </div>
-      {links.map((item) => (
+      {links.map((item: Section) => (
         <div
           className="flex flex-col gap-3 items-start w-full"
           key={item.title}
@@ -25,7 +25,7 @@ const Sidebar: FC = () => {
           <p className="uppercase cursor-pointer text-xs leading-[14px] font-[500] px-4">
             {item.title}
           </p>
-          {item.links.map((link) => (
+          {item.links.map((link: Link) => (
             <NavLink
               to={`/${link.name}`}
               key={link.name}

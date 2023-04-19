@@ -29,12 +29,12 @@ import {
   AiOutlineBarChart,
 } from "react-icons/ai";
 
-interface Link {
+export interface Link {
   name: string;
   icon: IconType;
 }
 
-interface Section {
+export interface Section {
   title: string;
   links: Link[];
 }
