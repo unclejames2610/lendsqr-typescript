@@ -25,18 +25,26 @@ const Header: FC = () => {
       </div>
       {/* others */}
       <div className="flex items-center gap-2 sm:gap-5 mr-4 md:mr-12">
-        <h2 className="text-dark-blue underline hidden sm:block ">Docs</h2>
+        <h2 className="text-dark-blue underline hidden sm:block cursor-pointer">
+          Docs
+        </h2>
         <div>
-          <IoMdNotificationsOutline size="25px" className="text-dark-blue" />
+          <IoMdNotificationsOutline
+            size="25px"
+            className="text-dark-blue cursor-pointer"
+          />
         </div>
         <div className="flex items-center gap-2">
           <img
             src={pfp}
             alt="profile picture"
-            className="rounded-full object-cover hidden sm:block"
+            className="rounded-full object-cover hidden sm:block cursor-pointer"
           />
           <p className="text-dark-blue">Adedeji</p>
-          <MdArrowDropDown size="20px" className="text-dark-blue" />
+          <MdArrowDropDown
+            size="20px"
+            className="text-dark-blue cursor-pointer"
+          />
         </div>
       </div>
     </div>

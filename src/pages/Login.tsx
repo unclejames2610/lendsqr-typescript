@@ -35,7 +35,7 @@ const Login: FC = () => {
             <h5 className="text-light-blue text-sm font-semibold ">
               FORGOT PASSWORD?
             </h5>
-            <Link to="dashboard">
+            <Link to="users">
               <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest">
                 LOG IN
               </button>

@@ -9,7 +9,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="Users" element={<Dashboard />} />
+        <Route path="users" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
