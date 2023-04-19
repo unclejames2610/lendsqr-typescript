@@ -4,13 +4,15 @@ import React, {
   ReactNode,
   createContext,
   useEffect,
+  Dispatch,
+  SetStateAction,
 } from "react";
 
 import { IUser } from "./interface";
 
 interface IUserContext {
   users: IUser[] | null;
-  setUsers: (users: IUser[] | null) => void;
+  setUsers: Dispatch<SetStateAction<IUser[] | null>>;
 }
 
 type IProps = {

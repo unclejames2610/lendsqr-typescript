@@ -1,9 +1,16 @@
-import React, { createContext, useState, FC, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  FC,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
-interface ISidebarContext {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  handleClose: () => void;
+export interface ISidebarContext {
+  isOpen?: boolean;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  handleClose?: () => void;
 }
 
 interface IProps {
@@ -19,14 +26,16 @@ export const SidebarProvider: FC<IProps> = ({ children }) => {
     setIsOpen(false);
   };
 
-  const value: ISidebarContext = {
-    isOpen,
-    setIsOpen,
-    handleClose,
-  };
+  // const value: ISidebarContext = {
+  //   isOpen,
+  //   setIsOpen,
+  //   handleClose,
+  // };
 
   return (
-    <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
+    <SidebarContext.Provider value={{ isOpen, setIsOpen, handleClose }}>
+      {children}
+    </SidebarContext.Provider>
   );
 };
 // export default SidebarProvider;
