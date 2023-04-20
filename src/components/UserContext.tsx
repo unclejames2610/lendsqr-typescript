@@ -10,7 +10,7 @@ import React, {
 
 import { IUser } from "./interface";
 
-interface IUserContext {
+export interface IUserContext {
   users: IUser[] | null;
   setUsers: Dispatch<SetStateAction<IUser[] | null>>;
 }
