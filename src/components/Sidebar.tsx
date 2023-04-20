@@ -1,21 +1,30 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, FaToolbox } from "react-icons/fa";
+import { FaToolbox } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { BsPeopleFill } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link, links, Section } from "../data/dummy";
+import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 
 const Sidebar: FC = () => {
+  const { handleClose } = useContext(SidebarContext) as ISidebarContext;
+
   const activeLink =
     "flex gap-2 cursor-pointer w-full bg-light-blue/[0.06] border-l-[3px] border-light-blue px-4";
 
   const normalLink = "flex gap-2 cursor-pointer w-full px-4 opacity-60";
   return (
-    <div className="h-screen w-[30%] max-w-[300px] shadow-xl overflow-auto flex flex-col text-dark-blue  mt-6 gap-4">
-      <div className="flex gap-2 items-center cursor-pointer w-full px-4 ">
-        <FaToolbox />
-        <span>Switch Organization</span>
-        <RiArrowDropDownLine size="30px" />
+    <div className="h-screen shadow-xl overflow-auto flex flex-col text-dark-blue  mt-6 gap-4">
+      <div className="flex gap-2 items-center  w-full px-4 ">
+        <FaToolbox className="cursor-pointer" />
+        <span className="cursor-pointer">Switch Organization</span>
+        <RiArrowDropDownLine size="30px" className="cursor-pointer" />
+        <div
+          className="cursor-pointer rounded-full p-1 hover:bg-light-gray/10 min-[900px]:hidden"
+          onClick={handleClose}
+        >
+          <AiOutlineClose className="text-lg font-bold" />
+        </div>
       </div>
       {links.map((item: Section) => (
         <div
@@ -42,31 +51,3 @@ const Sidebar: FC = () => {
 };
 
 export default Sidebar;
-
-{
-  /* <div>CUSTOMERS</div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Users</span>
-      </div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Guarantors</span>
-      </div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Loans</span>
-      </div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Decision Models</span>
-      </div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Savings</span>
-      </div>
-      <div className="flex gap-2 items-center">
-        <BsPeopleFill />
-        <span>Loan Requests</span>
-      </div> */
-}

@@ -10,6 +10,8 @@ import React, {
 export interface ISidebarContext {
   isOpen?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  screenSize?: number | undefined;
+  setScreenSize?: Dispatch<SetStateAction<number | undefined>>;
   handleClose?: () => void;
 }
 
@@ -21,9 +23,16 @@ export const SidebarContext = createContext<ISidebarContext | null>(null);
 
 export const SidebarProvider: FC<IProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [screenSize, setScreenSize] = useState<number | undefined>(
+    window.innerWidth
+  );
 
   const handleClose = (): void => {
-    setIsOpen(false);
+    if (screenSize) {
+      if (isOpen && screenSize <= 900) {
+        setIsOpen(false);
+      }
+    }
   };
 
   // const value: ISidebarContext = {
@@ -33,7 +42,9 @@ export const SidebarProvider: FC<IProps> = ({ children }) => {
   // };
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setIsOpen, handleClose }}>
+    <SidebarContext.Provider
+      value={{ isOpen, setIsOpen, handleClose, screenSize, setScreenSize }}
+    >
       {children}
     </SidebarContext.Provider>
   );

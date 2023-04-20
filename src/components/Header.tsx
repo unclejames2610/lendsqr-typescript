@@ -1,16 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import logo from "../assets/lendsqr-logo.svg";
 import pfp from "../assets/pfp.png";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdArrowDropDown } from "react-icons/md";
+import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 
 const Header: FC = () => {
+  const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
+    SidebarContext
+  ) as ISidebarContext;
+
+  const openSidebar = (): void => {
+    if (screenSize && setIsOpen) {
+      if (screenSize <= 900) {
+        setIsOpen(true);
+      }
+    }
+  };
+
   return (
     <div className="flex mt-4 w-full mx-auto justify-between flex-1 gap-4 sm:gap-0">
       {/* image logo */}
-      <div className="ml-4 md:ml-12 flex items-center">
-        <img src={logo} alt="logo" />
+      <div className="ml-4 md:ml-12 flex items-center gap-2 ">
+        <img src={logo} alt="logo" className="w-[70%] sm:w-[100%]" />
+        <div className="sm:hidden cursor-pointer" onClick={openSidebar}>
+          <AiOutlineMenu className="text-lg text-dark-blue" />
+        </div>
       </div>
       {/* search bar */}
       <div className="sm:flex items-center hidden">
