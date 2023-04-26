@@ -6,11 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link, links, Section } from "../data/dummy";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 
-interface Iprops {
-  width: number;
-}
-
-const Sidebar: FC<Iprops> = ({ width }) => {
+const Sidebar: FC = () => {
   const { handleClose } = useContext(SidebarContext) as ISidebarContext;
 
   const activeLink =
@@ -19,9 +15,9 @@ const Sidebar: FC<Iprops> = ({ width }) => {
   const normalLink = "flex gap-2 cursor-pointer w-full px-4 opacity-60";
   return (
     <div
-      className={`h-screen fixed shadow-xl overflow-auto flex flex-col text-dark-blue  mt-6 gap-4 w-${width}`}
+      className={`h-screen shadow-xl overflow-auto flex flex-col text-dark-blue  mt-6 gap-4 `}
     >
-      <div className="flex gap-2 items-center  w-full px-4 ">
+      <div className="flex gap-2 items-center w-full px-4 ">
         <FaToolbox className="cursor-pointer" />
         <span className="cursor-pointer">Switch Organization</span>
         <RiArrowDropDownLine size="30px" className="cursor-pointer" />

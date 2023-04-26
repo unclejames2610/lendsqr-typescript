@@ -2,9 +2,13 @@ import React, { FC, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { AiOutlineMenu } from "react-icons/ai";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { TbFileText } from "react-icons/tb";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
-import { BsPeopleFill } from "react-icons/bs";
+import { BsPeople } from "react-icons/bs";
 import { IUserContext, UserContext } from "../components/UserContext";
+import { FaCoins } from "react-icons/fa";
+import DashboardOutline from "../components/DashboardOutline";
 
 const Dashboard: FC = () => {
   const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
@@ -40,19 +44,20 @@ const Dashboard: FC = () => {
     <div className="">
       <Header />
 
-      {isOpen ? <Sidebar width={72} /> : <Sidebar width={0} />}
-
-      {/* content */}
-      <div className="py-6 min-[900px]:ml-[300px] ml-4 relative">
-        <div>Users</div>
-        <div className="grid md:grid-cols-4 grid-cols-2 mt-6">
-          <div className="flex flex-col">
-            <div>
-              <BsPeopleFill className="" />
-            </div>
-            <div className="uppercase">Users</div>
-            <div className="font-bold">2,453</div>
+      <div className="flex">
+        {isOpen ? (
+          <div className="w-72">
+            <Sidebar />
           </div>
+        ) : (
+          <div className="w-0">
+            <Sidebar />
+          </div>
+        )}
+
+        {/* content */}
+        <div className="py-6 px-8 mx-auto mt-6 w-screen">
+          <DashboardOutline />
         </div>
       </div>
     </div>
