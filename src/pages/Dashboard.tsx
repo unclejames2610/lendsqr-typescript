@@ -1,14 +1,10 @@
 import React, { FC, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { AiOutlineMenu } from "react-icons/ai";
-import { HiOutlineUserGroup } from "react-icons/hi";
-import { TbFileText } from "react-icons/tb";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
-import { BsPeople } from "react-icons/bs";
 import { IUserContext, UserContext } from "../components/UserContext";
-import { FaCoins } from "react-icons/fa";
 import DashboardOutline from "../components/DashboardOutline";
+import UsersTable from "../components/UsersTable";
 
 const Dashboard: FC = () => {
   const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
@@ -17,7 +13,7 @@ const Dashboard: FC = () => {
 
   const { users, setUsers } = useContext(UserContext) as IUserContext;
 
-  console.log(users);
+  // console.log(users);
 
   useEffect(() => {
     if (setScreenSize) {
@@ -56,8 +52,9 @@ const Dashboard: FC = () => {
         )}
 
         {/* content */}
-        <div className="py-6 px-8 mx-auto mt-6 w-screen">
+        <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
           <DashboardOutline />
+          <UsersTable />
         </div>
       </div>
     </div>

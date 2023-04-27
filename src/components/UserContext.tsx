@@ -11,8 +11,8 @@ import React, {
 import { IUser } from "./interface";
 
 export interface IUserContext {
-  users: IUser[] | null;
-  setUsers: Dispatch<SetStateAction<IUser[] | null>>;
+  users: IUser[];
+  setUsers: Dispatch<SetStateAction<IUser[]>>;
 }
 
 type IProps = {
@@ -22,7 +22,7 @@ type IProps = {
 export const UserContext = createContext<IUserContext | null>(null);
 
 export const UserProvider = ({ children }: IProps) => {
-  const [users, setUsers] = useState<IUser[] | null>(null);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
