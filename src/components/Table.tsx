@@ -58,12 +58,12 @@ const Table: FC = () => {
     <div className="mt-12">
       <table className="overflow-auto border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] w-full ">
         <thead>
-          <tr className="text-xs text-light-gray leading-[14px] font-semibold ">
+          <tr className="text-xs text-light-gray leading-[14px] font-semibold">
             {columns.map((column) => {
               return (
-                <th key={column.accessor} className="p-4">
+                <th key={column.accessor} className="p-4 relative">
                   <span>{column.label}</span>
-                  <span>
+                  <span className="absolute top-3 right-0 lg:right-6 text-xl cursor-pointer">
                     <BsFilter />
                   </span>
                 </th>
