@@ -32,6 +32,7 @@ export const UserProvider = ({ children }: IProps) => {
       const data = await response.json();
       setUsers(data);
     };
+
     fetchUsers();
   }, []);
 
