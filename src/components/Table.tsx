@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
+import { BsFilter } from "react-icons/bs";
 
 interface IColumn {
   accessor: string;
@@ -60,8 +61,11 @@ const Table: FC = () => {
           <tr className="text-xs text-light-gray leading-[14px] font-semibold ">
             {columns.map((column) => {
               return (
-                <th key={column.accessor} className="p-4 border">
-                  {column.label}
+                <th key={column.accessor} className="p-4">
+                  <span>{column.label}</span>
+                  <span>
+                    <BsFilter />
+                  </span>
                 </th>
               );
             })}
@@ -89,7 +93,7 @@ const Table: FC = () => {
                     );
                   }
                   return (
-                    <td key={column.accessor} className="p-6 border">
+                    <td key={column.accessor} className="p-6 ">
                       {row[column.accessor]}
                     </td>
                   );
