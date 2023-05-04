@@ -4,7 +4,8 @@ import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 import { IUserContext, UserContext } from "../components/UserContext";
 import DashboardOutline from "../components/DashboardOutline";
-import UsersTable from "../components/UsersTable";
+import Table from "../components/Table";
+// import UsersTable from "../components/UsersTable";
 
 const Dashboard: FC = () => {
   const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
@@ -54,7 +55,7 @@ const Dashboard: FC = () => {
         {/* content */}
         <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
           <DashboardOutline />
-          <UsersTable />
+          <Table />
         </div>
       </div>
     </div>

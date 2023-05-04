@@ -47,4 +47,5 @@ export interface IUser {
   socials: ISocials[];
   education: IEducation[];
   id: string;
+  [key: string]: any;
 }
