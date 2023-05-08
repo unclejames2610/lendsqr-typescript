@@ -15,6 +15,7 @@ import {
   BsFillPersonXFill,
 } from "react-icons/bs";
 import { isEmpty, isString, isBoolean, isNumber, toLower } from "./helpers";
+import { Link } from "react-router-dom";
 
 interface IColumn {
   accessor: string;
@@ -72,6 +73,7 @@ const Table: FC = () => {
     activePage === totalPages ? count : beginning + rowsPerPage - 1;
 
   const [showDiv, setShowDiv] = useState<boolean>(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const handleTab = (): void => {
     setShowDiv(!showDiv);
@@ -93,6 +95,12 @@ const Table: FC = () => {
         return updatedFilters;
       });
     }
+  };
+
+  const [clickedRowId, setClickedRowId] = useState<string | null>(null);
+
+  const handleRowClick = (id: string) => {
+    setClickedRowId(id === clickedRowId ? null : id);
   };
 
   function filterRows(rows: IUser[], filters: Record<string, any>) {
@@ -142,7 +150,7 @@ const Table: FC = () => {
           <tr className="text-xs text-light-gray leading-[14px] font-semibold">
             {columns.map((column) => {
               return (
-                <th>
+                <th key={column.accessor}>
                   <input
                     key={`${column.accessor}-search`}
                     type="search"
@@ -173,28 +181,36 @@ const Table: FC = () => {
                         className="p-6 flex justify-between gap-4"
                       >
                         {row[column.accessor]}
-                        <span className="cursor-pointer">
+                        <span
+                          className="cursor-pointer relative"
+                          onClick={() => handleRowClick(row.id)}
+                        >
                           <SlOptionsVertical />
-                          <div className="z-20 ">
-                            <p className="flex justify-between gap-2 px-2 whitespace-nowrap">
-                              <span>
-                                <BsEye />
-                              </span>
-                              View Details
-                            </p>
-                            <p className="flex justify-between gap-2">
-                              <span>
-                                <BsFillPersonXFill />
-                              </span>
-                              Blacklist User
-                            </p>
-                            <p className="flex justify-between gap-2">
-                              <span>
-                                <BsFillPersonCheckFill />
-                              </span>
-                              Activate User
-                            </p>
-                          </div>
+                          {clickedRowId === row.id && (
+                            <div className=" z-[1000] border-none p-4 rounded w-[180px] h-[130px] flex flex-col gap-4 items-center absolute right-0 top-0 bg-white shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)]">
+                              <Link to={`/users/${row.id}`}>
+                                <p className="flex justify-center gap-2 px-2 cursor-pointer">
+                                  <span>
+                                    <BsEye />
+                                  </span>
+                                  View Details
+                                </p>
+                              </Link>
+
+                              <p className="flex justify-center gap-2 ">
+                                <span>
+                                  <BsFillPersonXFill />
+                                </span>
+                                Blacklist User
+                              </p>
+                              <p className="flex justify-center gap-2">
+                                <span>
+                                  <BsFillPersonCheckFill />
+                                </span>
+                                Activate User
+                              </p>
+                            </div>
+                          )}
                         </span>
                       </td>
                     );

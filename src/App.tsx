@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
+import UserDetails from "./pages/UserDetails";
 
 const App: FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="users" element={<Dashboard />} />
+        <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
     </BrowserRouter>
   );
