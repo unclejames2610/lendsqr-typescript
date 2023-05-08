@@ -8,7 +8,13 @@ import {
 } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
-import { BsFilter } from "react-icons/bs";
+import {
+  BsFilter,
+  BsEye,
+  BsFillPersonCheckFill,
+  BsFillPersonXFill,
+} from "react-icons/bs";
+import { isEmpty, isString, isBoolean, isNumber, toLower } from "./helpers";
 
 interface IColumn {
   accessor: string;
@@ -16,43 +22,106 @@ interface IColumn {
 }
 
 const Table: FC = () => {
+  // const statusElements = ["Inactive", "Active", "Pending", "Blacklisted"];
+
+  // const getRandomElement = (): string => {
+  //   const randomIndex = Math.floor(Math.random() * statusElements.length);
+  //   return statusElements[randomIndex];
+  // };
   const { users, setUsers } = useContext(UserContext) as IUserContext;
 
   const [status, setStatus] = useState<string>("Inactive");
 
   useEffect(() => {
-    const updatedUsers = users.map((user) => ({ ...user, status: status }));
+    const updatedUsers = users.map((user) => ({
+      ...user,
+      status: status,
+      // createdAt: new Date(user.createdAt).toISOString(),
+    }));
     setUsers(updatedUsers);
   }, [users, status]);
 
   const rows: IUser[] = users;
 
   const columns: IColumn[] = [
-    { accessor: "orgName", label: "ORGANIZATION" },
-    { accessor: "userName", label: "USERNAME" },
-    { accessor: "email", label: "EMAIL" },
-    { accessor: "phoneNumber", label: "PHONE NUMBER" },
-    { accessor: "createdAt", label: "DATE JOINED" },
-    { accessor: "status", label: "STATUS" },
+    { accessor: "orgName", label: "organization" },
+    { accessor: "userName", label: "username" },
+    { accessor: "email", label: "email" },
+    { accessor: "phoneNumber", label: "phone number" },
+    { accessor: "createdAt", label: "date joined" },
+    { accessor: "status", label: "status" },
   ];
 
   const [activePage, setActivePage] = useState<number>(1);
+  const [filters, setFilters] = useState<Record<string, any>>({});
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  const count = rows.length;
-  const totalPages = Math.ceil(count / rowsPerPage);
+  const filteredRows = filterRows(rows, filters);
+  const count: number = filteredRows.length;
+  const totalPages: number = Math.ceil(count / rowsPerPage);
 
-  const calculatedRows = useMemo(() => {
-    return rows.slice((activePage - 1) * rowsPerPage, activePage * rowsPerPage);
+  const calculatedRows: IUser[] = useMemo(() => {
+    return filteredRows.slice(
+      (activePage - 1) * rowsPerPage,
+      activePage * rowsPerPage
+    );
   }, [rows, activePage, rowsPerPage]);
 
-  const beginning = activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
-  const end = activePage === totalPages ? count : beginning + rowsPerPage - 1;
+  const beginning: number =
+    activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
+  const end: number =
+    activePage === totalPages ? count : beginning + rowsPerPage - 1;
 
   const [showDiv, setShowDiv] = useState<boolean>(false);
 
-  const handleTab = () => {
+  const handleTab = (): void => {
     setShowDiv(!showDiv);
   };
+
+  const handleSearch = (value: any, accessor: any) => {
+    setActivePage(1);
+
+    if (value) {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        [accessor]: value,
+      }));
+    } else {
+      setFilters((prevFilters) => {
+        const updatedFilters = { ...prevFilters };
+        delete updatedFilters[accessor];
+
+        return updatedFilters;
+      });
+    }
+  };
+
+  function filterRows(rows: IUser[], filters: Record<string, any>) {
+    if (isEmpty(filters)) return rows;
+
+    return rows.filter((row) => {
+      return Object.keys(filters).every((accessor) => {
+        const value = row[accessor];
+        const searchValue = filters[accessor];
+
+        if (isString(value)) {
+          return toLower(value).includes(toLower(searchValue));
+        }
+
+        if (isBoolean(value)) {
+          return (
+            (searchValue === "true" && value) ||
+            (searchValue === "false" && !value)
+          );
+        }
+
+        if (isNumber(value)) {
+          return value == searchValue;
+        }
+
+        return false;
+      });
+    });
+  }
 
   return (
     <div className="mt-12">
@@ -61,11 +130,29 @@ const Table: FC = () => {
           <tr className="text-xs text-light-gray leading-[14px] font-semibold">
             {columns.map((column) => {
               return (
-                <th key={column.accessor} className="p-4 relative">
+                <th key={column.accessor} className="p-4 relative uppercase">
                   <span>{column.label}</span>
                   <span className="absolute top-3 right-0 lg:right-6 text-xl cursor-pointer">
                     <BsFilter />
                   </span>
+                </th>
+              );
+            })}
+          </tr>
+          <tr className="text-xs text-light-gray leading-[14px] font-semibold">
+            {columns.map((column) => {
+              return (
+                <th>
+                  <input
+                    key={`${column.accessor}-search`}
+                    type="search"
+                    placeholder={`Search ${column.label}`}
+                    value={filters[column.accessor]}
+                    onChange={(event) =>
+                      handleSearch(event.target.value, column.accessor)
+                    }
+                    className="border border-dark-blue/20 rounded-lg p-2 focus:outline-none placeholder:text-light-gray/70 capitalize"
+                  />
                 </th>
               );
             })}
@@ -88,6 +175,26 @@ const Table: FC = () => {
                         {row[column.accessor]}
                         <span className="cursor-pointer">
                           <SlOptionsVertical />
+                          <div className="z-20 ">
+                            <p className="flex justify-between gap-2 px-2 whitespace-nowrap">
+                              <span>
+                                <BsEye />
+                              </span>
+                              View Details
+                            </p>
+                            <p className="flex justify-between gap-2">
+                              <span>
+                                <BsFillPersonXFill />
+                              </span>
+                              Blacklist User
+                            </p>
+                            <p className="flex justify-between gap-2">
+                              <span>
+                                <BsFillPersonCheckFill />
+                              </span>
+                              Activate User
+                            </p>
+                          </div>
                         </span>
                       </td>
                     );
@@ -122,6 +229,7 @@ const Table: FC = () => {
                     onClick={() => {
                       setRowsPerPage(5);
                       handleTab();
+                      setActivePage(1);
                     }}
                   >
                     5
@@ -131,6 +239,7 @@ const Table: FC = () => {
                     onClick={() => {
                       setRowsPerPage(10);
                       handleTab();
+                      setActivePage(1);
                     }}
                   >
                     10
@@ -140,6 +249,7 @@ const Table: FC = () => {
                     onClick={() => {
                       setRowsPerPage(15);
                       handleTab();
+                      setActivePage(1);
                     }}
                   >
                     15
@@ -149,6 +259,7 @@ const Table: FC = () => {
                     onClick={() => {
                       setRowsPerPage(20);
                       handleTab();
+                      setActivePage(1);
                     }}
                   >
                     20
