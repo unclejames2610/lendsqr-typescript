@@ -40,12 +40,12 @@ export interface IUser {
   email: string;
   phoneNumber: string;
   lastActiveDate: string;
-  profile: IProfile[];
-  guarantor: IGuarantor[];
+  profile: IProfile;
+  guarantor: IGuarantor;
   accountBalance: string;
   accountNumber: string;
-  socials: ISocials[];
-  education: IEducation[];
+  socials: ISocials;
+  education: IEducation;
   id: string;
   status: string;
   [key: string]: any;

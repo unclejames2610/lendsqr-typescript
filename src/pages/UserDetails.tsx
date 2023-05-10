@@ -30,6 +30,28 @@ const UserDetails: FC = () => {
     );
   }
 
+  const {
+    userName,
+    accountBalance,
+    accountNumber,
+    profile: { avatar },
+  } = user;
+
+  // const {firstName,
+  //   lastName,
+  //   phoneNumber,
+  //   avatar,
+  //   gender,
+  //   bvn,
+  //   address,
+  //   currency} = profile;
+
+  // const avatar = profile[0]?.avatar;
+  // console.log(avatar);
+  // console.log(profile);
+  // console.log(user);
+  console.log(avatar);
+
   return (
     <div className="">
       <Header />
@@ -48,20 +70,28 @@ const UserDetails: FC = () => {
         {/* content */}
         <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
           <UserDetailsHeader />
-          <div className="flex items-center text-dark-blue  justify-around">
+          <div className="flex items-center text-dark-blue  justify-start gap-8 lg:gap-16 mt-8">
             {/* avatar */}
-            <div className="rounded-full border-none bg-dark-blue/[0.16] p-6 mt-8">
+            <div
+              className="rounded-full 
+            border-none h-[100px] w-[100px]"
+            >
               {/* <AiOutlineUser className="text-3xl text-dark-blue" /> */}
+
+              <img src={avatar} className="rounded-full object-fill" />
             </div>
+
             {/* name */}
             <div>
-              <p className="text-[22px] leading-[26px] font-[500]">Name</p>
+              <p className="text-[22px] leading-[26px] font-[500]">
+                {userName}
+              </p>
               <p className="text-light-gray text-sm leading-4 font-normal">
-                account number
+                {accountNumber}
               </p>
             </div>
             {/* user tier */}
-            <div>
+            <div className="border-x border-light-gray/20 p-8">
               <p className="text-light-gray text-sm leading-4 font-normal">
                 User's Tier
               </p>
@@ -73,8 +103,12 @@ const UserDetails: FC = () => {
             </div>
             {/* balance */}
             <div>
-              <p className="text-[22px] leading-[26px] font-[500]">N</p>
-              <p className="text-xs leading-[14px]">accnumber/Providus Bank</p>
+              <p className="text-[22px] leading-[26px] font-[500]">
+                N{accountBalance}
+              </p>
+              <p className="text-xs leading-[14px]">
+                {accountNumber}/Providus Bank
+              </p>
             </div>
           </div>
         </div>
