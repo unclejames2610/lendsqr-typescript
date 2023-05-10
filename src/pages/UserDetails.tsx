@@ -4,8 +4,10 @@ import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 import { IUserContext, UserContext } from "../components/UserContext";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { AiOutlineUser, AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 import { IUser } from "../components/interface";
+import UserDetailsHeader from "../components/UserDetailsHeader";
 
 const UserDetails: FC = () => {
   const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
@@ -45,26 +47,34 @@ const UserDetails: FC = () => {
 
         {/* content */}
         <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
-          <div className="flex items-center gap-2">
-            <Link to={"/users"}>
-              <HiOutlineArrowNarrowLeft />
-            </Link>
-
-            <span className="text-base leading-[19px] text-light-gray">
-              Back to Users
-            </span>
-          </div>
-          <div className="flex justify-between mt-8">
-            <div className="font-[500] text-2xl leading-7 text-dark-blue">
-              User Details
+          <UserDetailsHeader />
+          <div className="flex items-center text-dark-blue  justify-around">
+            {/* avatar */}
+            <div className="rounded-full border-none bg-dark-blue/[0.16] p-6 mt-8">
+              {/* <AiOutlineUser className="text-3xl text-dark-blue" /> */}
             </div>
-            <div className="flex gap-4">
-              <button className="border rounded-lg py-2 px-4 uppercase leading-4 text-sm text-center tracking-widest text-custom-red border-custom-red cursor-pointer">
-                blacklist user
-              </button>
-              <button className="border rounded-lg py-2 px-4 uppercase leading-4 text-sm text-center tracking-widest text-light-blue border-light-blue cursor-pointer">
-                activate user
-              </button>
+            {/* name */}
+            <div>
+              <p className="text-[22px] leading-[26px] font-[500]">Name</p>
+              <p className="text-light-gray text-sm leading-4 font-normal">
+                account number
+              </p>
+            </div>
+            {/* user tier */}
+            <div>
+              <p className="text-light-gray text-sm leading-4 font-normal">
+                User's Tier
+              </p>
+              <p className="flex text-custom-gold">
+                <AiFillStar />
+                <AiOutlineStar />
+                <AiOutlineStar />
+              </p>
+            </div>
+            {/* balance */}
+            <div>
+              <p className="text-[22px] leading-[26px] font-[500]">N</p>
+              <p className="text-xs leading-[14px]">accnumber/Providus Bank</p>
             </div>
           </div>
         </div>
