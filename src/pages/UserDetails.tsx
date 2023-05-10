@@ -34,7 +34,9 @@ const UserDetails: FC = () => {
     userName,
     accountBalance,
     accountNumber,
-    profile: { avatar },
+    phoneNumber,
+    email,
+    profile: { avatar, firstName, lastName, gender, bvn, address },
   } = user;
 
   // const {firstName,
@@ -122,6 +124,48 @@ const UserDetails: FC = () => {
               <p className="text-center px-2">Loans</p>
               <p className="text-center px-2">Savings</p>
               <p className="text-center px-2">App and System</p>
+            </div>
+          </div>
+          <div>
+            {/* personal info */}
+            <div>
+              <p>Personal Information</p>
+              <div className="flex justify-normal gap-8">
+                <div>
+                  <p>full name</p>
+                  <p>
+                    {firstName} {lastName}
+                  </p>
+                </div>
+                <div>
+                  <p>phone number</p>
+                  <p>{phoneNumber}</p>
+                </div>
+                <div>
+                  <p>email address</p>
+                  <p>{email}</p>
+                </div>
+                <div>
+                  <p>bvn</p>
+                  <p>{bvn}</p>
+                </div>
+                <div>
+                  <p>gender</p>
+                  <p>{gender}</p>
+                </div>
+                <div>
+                  <p>marital status</p>
+                  <p>single</p>
+                </div>
+                <div>
+                  <p>children</p>
+                  <p>none</p>
+                </div>
+                <div>
+                  <p>type of residence</p>
+                  <p>{address}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
