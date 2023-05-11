@@ -73,7 +73,7 @@ const UserDetails: FC = () => {
         {/* content */}
         <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
           <UserDetailsHeader />
-          <div className="border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] ">
+          <div className="border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] py-4 px-6 mb-4">
             <div className="flex items-center text-dark-blue  justify-start gap-8 lg:gap-16 mt-8">
               {/* avatar */}
               <div
@@ -127,7 +127,7 @@ const UserDetails: FC = () => {
               <p className="text-center px-2">App and System</p>
             </div>
           </div>
-          <div>
+          <div className="border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] py-2 px-6">
             {/* personal info */}
             <div className="mt-8 border-b border-dark-blue/10 pb-6">
               <p className="font-[500] leading-[19px] text-dark-blue">
@@ -192,7 +192,7 @@ const UserDetails: FC = () => {
                 </div>
                 <div className="flex flex-col gap-y-2">
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
-                    type of residence
+                    address
                   </p>
                   <p className="text-light-gray font-[500]  leading-[19px]">
                     {address}
@@ -242,7 +242,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     office email
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] lowercase">
                     {officeEmail}
                   </p>
                 </div>
