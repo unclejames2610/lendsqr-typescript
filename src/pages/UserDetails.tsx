@@ -3,9 +3,9 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 import { IUserContext, UserContext } from "../components/UserContext";
-import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+
 import { AiOutlineUser, AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IUser } from "../components/interface";
 import UserDetailsHeader from "../components/UserDetailsHeader";
 
@@ -49,11 +49,11 @@ const UserDetails: FC = () => {
     socials: { facebook, instagram, twitter },
   } = user;
 
-  const guarantorName = user.guarantor.firstName;
-  const guarantorlastName = user.guarantor.lastName;
-  const guarantorNumber = user.guarantor.phoneNumber;
-  const guarantorGender = user.guarantor.gender;
-  const guarantorAddress = user.guarantor.address;
+  const guarantorName: string = user.guarantor.firstName;
+  const guarantorlastName: string = user.guarantor.lastName;
+  const guarantorNumber: string = user.guarantor.phoneNumber;
+  const guarantorGender: string = user.guarantor.gender;
+  const guarantorAddress: string = user.guarantor.address;
 
   return (
     <div className="">

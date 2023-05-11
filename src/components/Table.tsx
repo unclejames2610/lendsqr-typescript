@@ -14,8 +14,16 @@ import {
   BsFillPersonCheckFill,
   BsFillPersonXFill,
 } from "react-icons/bs";
-import { isEmpty, isString, isBoolean, isNumber, toLower } from "./helpers";
+import {
+  isEmpty,
+  isString,
+  isBoolean,
+  isNumber,
+  toLower,
+  isEqual,
+} from "./helpers";
 import { Link } from "react-router-dom";
+// import {isEqual} from "lodash/isEqual";
 
 interface IColumn {
   accessor: string;
@@ -37,9 +45,11 @@ const Table: FC = () => {
     const updatedUsers = users.map((user) => ({
       ...user,
       status: status,
-      // createdAt: new Date(user.createdAt).toISOString(),
+      createdAt: new Date(user.createdAt).toISOString(),
     }));
-    setUsers(updatedUsers);
+    if (!isEqual(updatedUsers, users)) {
+      setUsers(updatedUsers);
+    }
   }, [users, status]);
 
   const rows: IUser[] = users;
