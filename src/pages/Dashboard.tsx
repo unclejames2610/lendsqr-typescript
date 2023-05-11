@@ -12,7 +12,7 @@ const Dashboard: FC = () => {
     SidebarContext
   ) as ISidebarContext;
 
-  const { users, setUsers } = useContext(UserContext) as IUserContext;
+  // const { users, setUsers } = useContext(UserContext) as IUserContext;
 
   // console.log(users);
 
@@ -25,7 +25,7 @@ const Dashboard: FC = () => {
       handleResize();
       return () => window.removeEventListener("resize", handleResize);
     }
-  }, []);
+  }, [setScreenSize]);
 
   useEffect(() => {
     if (setIsOpen) {
@@ -35,7 +35,7 @@ const Dashboard: FC = () => {
         setIsOpen(true);
       }
     }
-  }, [screenSize]);
+  }, [screenSize, setIsOpen]);
 
   return (
     <div className="">

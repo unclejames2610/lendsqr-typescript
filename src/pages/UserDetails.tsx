@@ -4,17 +4,15 @@ import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 import { IUserContext, UserContext } from "../components/UserContext";
 
-import { AiOutlineUser, AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
-import { IUser } from "../components/interface";
+// import { IUser } from "../components/interface";
 import UserDetailsHeader from "../components/UserDetailsHeader";
 
 const UserDetails: FC = () => {
-  const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
-    SidebarContext
-  ) as ISidebarContext;
+  const { isOpen } = useContext(SidebarContext) as ISidebarContext;
 
-  const { users, setUsers } = useContext(UserContext) as IUserContext;
+  const { users } = useContext(UserContext) as IUserContext;
 
   const { id } = useParams();
 
@@ -82,7 +80,11 @@ const UserDetails: FC = () => {
               >
                 {/* <AiOutlineUser className="text-3xl text-dark-blue" /> */}
 
-                <img src={avatar} className="rounded-full object-fill" />
+                <img
+                  src={avatar}
+                  className="rounded-full object-fill"
+                  alt="avatar"
+                />
               </div>
 
               {/* name */}

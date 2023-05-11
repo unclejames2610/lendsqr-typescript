@@ -2,7 +2,6 @@ import React, { FC, useContext, useMemo, useEffect, useState } from "react";
 import { IUserContext, UserContext } from "./UserContext";
 import { IUser } from "./interface";
 import {
-  MdOutlineFilterList,
   MdOutlineKeyboardArrowRight,
   MdKeyboardArrowLeft,
 } from "react-icons/md";
@@ -39,7 +38,7 @@ const Table: FC = () => {
   // };
   const { users, setUsers } = useContext(UserContext) as IUserContext;
 
-  const [status, setStatus] = useState<string>("Inactive");
+  const status: string = "Inactive";
 
   useEffect(() => {
     const updatedUsers = users.map((user) => ({
@@ -50,7 +49,7 @@ const Table: FC = () => {
     if (!isEqual(updatedUsers, users)) {
       setUsers(updatedUsers);
     }
-  }, [users, status]);
+  }, [users, status, setUsers]);
 
   const rows: IUser[] = users;
 
@@ -75,15 +74,15 @@ const Table: FC = () => {
       (activePage - 1) * rowsPerPage,
       activePage * rowsPerPage
     );
-  }, [rows, activePage, rowsPerPage]);
+  }, [rows, activePage, rowsPerPage, filteredRows]);
 
   const beginning: number =
     activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
-  const end: number =
-    activePage === totalPages ? count : beginning + rowsPerPage - 1;
+  // const end: number =
+  //   activePage === totalPages ? count : beginning + rowsPerPage - 1;
 
   const [showDiv, setShowDiv] = useState<boolean>(false);
-  const [showOptions, setShowOptions] = useState<boolean>(false);
+  // const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const handleTab = (): void => {
     setShowDiv(!showDiv);
@@ -133,7 +132,7 @@ const Table: FC = () => {
         }
 
         if (isNumber(value)) {
-          return value == searchValue;
+          return value === searchValue;
         }
 
         return false;

@@ -7,7 +7,7 @@ import { MdArrowDropDown } from "react-icons/md";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 
 const Header: FC = () => {
-  const { isOpen, setIsOpen, screenSize, setScreenSize } = useContext(
+  const { setIsOpen, screenSize } = useContext(
     SidebarContext
   ) as ISidebarContext;
 
@@ -53,7 +53,7 @@ const Header: FC = () => {
         <div className="flex items-center gap-2">
           <img
             src={pfp}
-            alt="profile picture"
+            alt="profile"
             className="rounded-full object-cover hidden sm:block cursor-pointer"
           />
           <p className="text-dark-blue">Adedeji</p>

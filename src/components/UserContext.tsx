@@ -1,6 +1,5 @@
-import React, {
+import {
   useState,
-  FC,
   ReactNode,
   createContext,
   useEffect,

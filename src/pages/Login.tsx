@@ -13,7 +13,7 @@ const Login: FC = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mt-20 flex-1 gap-16 md:gap-12 lg:gap-0  ">
         {/* picture */}
         <div className="ml-4 md:ml-24">
-          <img src={heroImg} alt="hero image" className="object-fill" />
+          <img src={heroImg} alt="hero" className="object-fill" />
         </div>
         {/* form */}
         <div className="flex flex-col gap-3 lg:w-[447px] mr-4 md:mr-24 lg:mr-48">
