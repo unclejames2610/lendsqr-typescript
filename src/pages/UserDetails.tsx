@@ -37,22 +37,23 @@ const UserDetails: FC = () => {
     phoneNumber,
     email,
     profile: { avatar, firstName, lastName, gender, bvn, address },
+    education: {
+      level,
+      employmentStatus,
+      sector,
+      duration,
+      officeEmail,
+      monthlyIncome,
+      loanRepayment,
+    },
+    socials: { facebook, instagram, twitter },
   } = user;
 
-  // const {firstName,
-  //   lastName,
-  //   phoneNumber,
-  //   avatar,
-  //   gender,
-  //   bvn,
-  //   address,
-  //   currency} = profile;
-
-  // const avatar = profile[0]?.avatar;
-  // console.log(avatar);
-  // console.log(profile);
-  // console.log(user);
-  console.log(avatar);
+  const guarantorName = user.guarantor.firstName;
+  const guarantorlastName = user.guarantor.lastName;
+  const guarantorNumber = user.guarantor.phoneNumber;
+  const guarantorGender = user.guarantor.gender;
+  const guarantorAddress = user.guarantor.address;
 
   return (
     <div className="">
@@ -128,42 +129,210 @@ const UserDetails: FC = () => {
           </div>
           <div>
             {/* personal info */}
-            <div>
-              <p>Personal Information</p>
-              <div className="flex justify-normal gap-8">
-                <div>
-                  <p>full name</p>
-                  <p>
+            <div className="mt-8 border-b border-dark-blue/10 pb-6">
+              <p className="font-[500] leading-[19px] text-dark-blue">
+                Personal Information
+              </p>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    full name
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
                     {firstName} {lastName}
                   </p>
                 </div>
-                <div>
-                  <p>phone number</p>
-                  <p>{phoneNumber}</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    phone number
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {phoneNumber}
+                  </p>
                 </div>
-                <div>
-                  <p>email address</p>
-                  <p>{email}</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    email address
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {email}
+                  </p>
                 </div>
-                <div>
-                  <p>bvn</p>
-                  <p>{bvn}</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    bvn
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {bvn}
+                  </p>
                 </div>
-                <div>
-                  <p>gender</p>
-                  <p>{gender}</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    gender
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {gender}
+                  </p>
                 </div>
-                <div>
-                  <p>marital status</p>
-                  <p>single</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    marital status
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    Single
+                  </p>
                 </div>
-                <div>
-                  <p>children</p>
-                  <p>none</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    children
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    None
+                  </p>
                 </div>
-                <div>
-                  <p>type of residence</p>
-                  <p>{address}</p>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    type of residence
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {address}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* education and employment */}
+            <div className="mt-8 border-b border-dark-blue/10 pb-6">
+              <p className="font-[500] leading-[19px] text-dark-blue">
+                Education and Employment
+              </p>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    level of education
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {level}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    employment status
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {employmentStatus}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    sector of employment
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {sector}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    duration of employment
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {duration}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    office email
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {officeEmail}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    monthly income
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    N{monthlyIncome[0]} - N{monthlyIncome[1]}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    loan repayment
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    N{loanRepayment}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* socials */}
+            <div className="mt-8 border-b border-dark-blue/10 pb-6">
+              <p className="font-[500] leading-[19px] text-dark-blue">
+                Socials
+              </p>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    twitter
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {twitter}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    facebook
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {facebook}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    instagram
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {instagram}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* guarantor */}
+            <div className="mt-8 pb-6">
+              <p className="font-[500] leading-[19px] text-dark-blue">
+                Guarantor
+              </p>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    full name
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {guarantorName} {guarantorlastName}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    phone number
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {guarantorNumber}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    email address
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {guarantorAddress}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <p className="uppercase text-light-gray text-xs leading-[14px]">
+                    gender
+                  </p>
+                  <p className="text-light-gray font-[500]  leading-[19px]">
+                    {guarantorGender}
+                  </p>
                 </div>
               </div>
             </div>
