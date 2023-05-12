@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
 import { IUserContext, UserContext } from "../components/UserContext";
+import logo from "../assets/lendsqr-logo.svg";
+import { RiLoader4Fill } from "react-icons/ri";
 
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
@@ -22,8 +24,13 @@ const UserDetails: FC = () => {
 
   if (!user) {
     return (
-      <section className="h-screen flex justify-center items-center">
-        Loading...
+      <section className="h-screen flex flex-col justify-center items-center">
+        <div className="h-12">
+          <img src={logo} alt="logo" />
+        </div>
+        <div className="">
+          <RiLoader4Fill className="animate-spin text-4xl text-dark-blue " />
+        </div>
       </section>
     );
   }
@@ -72,7 +79,7 @@ const UserDetails: FC = () => {
         <div className="py-6 px-4 md:px-8 mx-auto mt-6 w-screen">
           <UserDetailsHeader />
           <div className="border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] py-4 px-6 mb-4">
-            <div className="flex items-center text-dark-blue  justify-start gap-8 lg:gap-16 mt-8">
+            <div className="flex flex-col md:flex-row items-start md:items-center text-dark-blue  justify-start gap-8 lg:gap-16 mt-8">
               {/* avatar */}
               <div
                 className="rounded-full 
@@ -118,7 +125,7 @@ const UserDetails: FC = () => {
               </div>
             </div>
             {/* Tabs */}
-            <div className="flex justify-between mt-8 leading-[19px]">
+            <div className="md:flex justify-between mt-8 leading-[19px] hidden ">
               <p className="text-center px-2 border-b-2 text-light-blue border-light-blue">
                 General Details
               </p>
@@ -135,12 +142,12 @@ const UserDetails: FC = () => {
               <p className="font-[500] leading-[19px] text-dark-blue">
                 Personal Information
               </p>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
                 <div className="flex flex-col gap-y-2">
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     full name
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray md:text-base text-sm whitespace-normal break-words font-[500]  leading-[19px]">
                     {firstName} {lastName}
                   </p>
                 </div>
@@ -148,7 +155,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     phone number
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {phoneNumber}
                   </p>
                 </div>
@@ -156,7 +163,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     email address
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {email}
                   </p>
                 </div>
@@ -164,7 +171,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     bvn
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {bvn}
                   </p>
                 </div>
@@ -172,7 +179,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     gender
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {gender}
                   </p>
                 </div>
@@ -180,7 +187,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     marital status
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     Single
                   </p>
                 </div>
@@ -188,7 +195,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     children
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     None
                   </p>
                 </div>
@@ -196,7 +203,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     address
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {address}
                   </p>
                 </div>
@@ -207,12 +214,12 @@ const UserDetails: FC = () => {
               <p className="font-[500] leading-[19px] text-dark-blue">
                 Education and Employment
               </p>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
                 <div className="flex flex-col gap-y-2">
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     level of education
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {level}
                   </p>
                 </div>
@@ -220,7 +227,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     employment status
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {employmentStatus}
                   </p>
                 </div>
@@ -228,7 +235,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     sector of employment
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {sector}
                   </p>
                 </div>
@@ -236,7 +243,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     duration of employment
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {duration}
                   </p>
                 </div>
@@ -244,7 +251,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     office email
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px] lowercase">
+                  <p className="text-light-gray font-[500]  leading-[19px] lowercase md:text-base text-sm whitespace-normal break-words">
                     {officeEmail}
                   </p>
                 </div>
@@ -252,7 +259,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     monthly income
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     N{monthlyIncome[0]} - N{monthlyIncome[1]}
                   </p>
                 </div>
@@ -260,7 +267,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     loan repayment
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     N{loanRepayment}
                   </p>
                 </div>
@@ -271,12 +278,12 @@ const UserDetails: FC = () => {
               <p className="font-[500] leading-[19px] text-dark-blue">
                 Socials
               </p>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
                 <div className="flex flex-col gap-y-2">
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     twitter
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {twitter}
                   </p>
                 </div>
@@ -284,7 +291,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     facebook
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {facebook}
                   </p>
                 </div>
@@ -292,7 +299,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     instagram
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {instagram}
                   </p>
                 </div>
@@ -303,12 +310,12 @@ const UserDetails: FC = () => {
               <p className="font-[500] leading-[19px] text-dark-blue">
                 Guarantor
               </p>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
                 <div className="flex flex-col gap-y-2">
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     full name
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {guarantorName} {guarantorlastName}
                   </p>
                 </div>
@@ -316,7 +323,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     phone number
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {guarantorNumber}
                   </p>
                 </div>
@@ -324,7 +331,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     email address
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {guarantorAddress}
                   </p>
                 </div>
@@ -332,7 +339,7 @@ const UserDetails: FC = () => {
                   <p className="uppercase text-light-gray text-xs leading-[14px]">
                     gender
                   </p>
-                  <p className="text-light-gray font-[500]  leading-[19px]">
+                  <p className="text-light-gray font-[500]  leading-[19px] md:text-base text-sm whitespace-normal break-words">
                     {guarantorGender}
                   </p>
                 </div>

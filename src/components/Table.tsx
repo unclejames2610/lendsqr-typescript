@@ -141,8 +141,8 @@ const Table: FC = () => {
   }
 
   return (
-    <div className="mt-12">
-      <table className="overflow-auto border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] w-full ">
+    <div className="mt-12 ">
+      <table className=" border rounded border-dark-blue/[0.06] shadow-[0_3px_5px_20px_rgba(0,0,0,0.04)] w-full overflow-scroll">
         <thead>
           <tr className="text-xs text-light-gray leading-[14px] font-semibold">
             {columns.map((column) => {
@@ -237,18 +237,18 @@ const Table: FC = () => {
       </table>
       <div className="flex justify-between mt-6">
         <div>
-          <p className="flex justify-between gap-2 text-light-gray text-sm font-normal">
+          <p className="flex justify-between gap-2 text-light-gray text-xs md:text-sm font-normal items-center whitespace-nowrap">
             Showing
             <span className="flex border border-none rounded  items-center gap-3 bg-dark-blue/10 pl-2 relative">
               <span className="text-dark-blue">{rowsPerPage}</span>
               <span
-                className="cursor-pointer text-2xl text-dark-blue"
+                className="cursor-pointer text-base md:text-2xl text-dark-blue"
                 onClick={handleTab}
               >
                 <RiArrowDropDownLine />
               </span>
               {showDiv && (
-                <div className="bg-dark-blue/10 border border-none rounded-t-none rounded items-center flex flex-col gap-2 absolute top-6 p-2 left-0 text-dark-blue">
+                <div className="bg-dark-blue/10 border border-none rounded-t-none rounded items-center flex flex-col gap-2 absolute top-6 p-2 left-0 text-dark-blue mb-8">
                   <p
                     className="cursor-pointer"
                     onClick={() => {
@@ -295,26 +295,26 @@ const Table: FC = () => {
             out of {count}
           </p>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex lg:gap-4 gap-2 items-center">
           <button
             disabled={activePage === 1}
             onClick={() => setActivePage(activePage - 1)}
             className="disabled:text-dark-blue/20 bg-dark-blue/10"
           >
-            <MdKeyboardArrowLeft className="cursor-pointer text-2xl text-dark-blue" />
+            <MdKeyboardArrowLeft className="cursor-pointer md:text-2xl text-base text-dark-blue" />
           </button>
-          <p className="text-light-gray text-base">{activePage}</p>
+          <p className="text-light-gray text-xs md:text-base">{activePage}</p>
 
-          <p className="text-light-gray text-base">of</p>
+          <p className="text-light-gray text-xs md:text-base">of</p>
 
-          <p className="text-light-gray text-base">{totalPages}</p>
+          <p className="text-light-gray text-xs md:text-base">{totalPages}</p>
 
           <button
             disabled={activePage === totalPages}
             onClick={() => setActivePage(activePage + 1)}
             className="disabled:text-dark-blue/20 bg-dark-blue/20"
           >
-            <MdOutlineKeyboardArrowRight className="cursor-pointer text-2xl text-dark-blue " />
+            <MdOutlineKeyboardArrowRight className="cursor-pointer md:text-2xl text-dark-blue text-base" />
           </button>
         </div>
       </div>
