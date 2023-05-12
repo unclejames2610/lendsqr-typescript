@@ -36,7 +36,7 @@ const Login: FC = () => {
               FORGOT PASSWORD?
             </h5>
             <Link to="users">
-              <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest">
+              <button className="text-white bg-light-blue p-3 rounded-lg font-semibold text-sm w-full tracking-widest mb-12 md:mb-0">
                 LOG IN
               </button>
             </Link>
