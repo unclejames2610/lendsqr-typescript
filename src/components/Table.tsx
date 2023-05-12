@@ -74,10 +74,10 @@ const Table: FC = () => {
       (activePage - 1) * rowsPerPage,
       activePage * rowsPerPage
     );
-  }, [rows, activePage, rowsPerPage, filteredRows]);
+  }, [activePage, rowsPerPage, filteredRows]);
 
-  const beginning: number =
-    activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
+  // const beginning: number =
+  // activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
   // const end: number =
   //   activePage === totalPages ? count : beginning + rowsPerPage - 1;
 

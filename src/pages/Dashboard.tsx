@@ -2,7 +2,7 @@ import React, { FC, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { ISidebarContext, SidebarContext } from "../components/SidebarContext";
-import { IUserContext, UserContext } from "../components/UserContext";
+// import { IUserContext, UserContext } from "../components/UserContext";
 import DashboardOutline from "../components/DashboardOutline";
 import Table from "../components/Table";
 // import UsersTable from "../components/UsersTable";
