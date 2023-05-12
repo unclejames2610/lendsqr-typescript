@@ -104,7 +104,7 @@ const UserDetails: FC = () => {
                 </p>
               </div>
               {/* user tier */}
-              <div className=" border-y md:border-x border-light-gray/20 p-8">
+              <div className=" border-y md:border-x md:border-y-0 border-light-gray/20 p-8">
                 <p className="text-light-gray text-sm leading-4 font-normal">
                   User's Tier
                 </p>
